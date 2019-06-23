@@ -2,9 +2,11 @@
   "name": "islaam-db-client",
   "version": "1.0.0",
   "description": "A client to access authentic Islaamic information",
-  "main": "./dist/IslaamDBClient.js",
+  "main": "dist/IslaamDBClient.js",
+  "types": "dist/IslaamDBClient.d.ts",
   "scripts": {
-    "test": "node ./dist/UnitTesting.js"
+    "test": "node ./dist/UnitTesting.js",
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",

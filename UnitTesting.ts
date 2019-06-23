@@ -1,8 +1,9 @@
+import { readFileSync } from "fs";
 import IslaamDBClient from "./IslaamDBClient";
-import { GOOGLE_API_KEY } from "./key";
 
 (async () => {
-    const idb = new IslaamDBClient(GOOGLE_API_KEY);
+    const key = readFileSync("key.txt", "utf8");
+    const idb = new IslaamDBClient(key);
     await (async () => {
         // get person by id
         const data = [
