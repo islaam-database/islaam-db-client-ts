@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/islaam-database/islaam-db-client-ts/issues"
   },
-  "homepage": "https://github.com/islaam-database/islaam-db-client-ts#readme"
+  "homepage": "https://github.com/islaam-database/islaam-db-client-ts#readme",
+  "dependencies": {
+    "@types/fast-levenshtein": "0.0.1",
+    "@types/node": "^12.0.10",
+    "fast-levenshtein": "^2.0.6",
+    "googleapis": "^39.2.0"
+  }
 }
