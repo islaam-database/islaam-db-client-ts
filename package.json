@@ -23,7 +23,9 @@
   "dependencies": {
     "@types/fast-levenshtein": "0.0.1",
     "@types/node": "^12.0.10",
+    "encoding": "^0.1.12",
     "fast-levenshtein": "^2.0.6",
-    "googleapis": "^39.2.0"
+    "googleapis": "^39.2.0",
+    "iconv": "^2.3.4"
   }
 }

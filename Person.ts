@@ -9,11 +9,11 @@ export class Person {
 
     constructor(vals: Array<string | number>, cols: string[]) {
         cols = cols.map((c) => c.toLowerCase());
-        this.id = vals[cols.indexOf("id")] as number;
+        this.id = Number(vals[cols.indexOf("id")]);
         this.name = vals[cols.indexOf("name")] as string;
         this.kunya = vals[cols.indexOf("full name")] as string;
-        this.birthYear = vals[cols.indexOf("birth year")] as number;
-        this.deathYear = vals[cols.indexOf("death year")] as number;
+        this.birthYear = Number(vals[cols.indexOf("birth year")]);
+        this.deathYear = Number(vals[cols.indexOf("death year")]);
         this.source = vals[cols.indexOf("source")] as string;
     }
 }

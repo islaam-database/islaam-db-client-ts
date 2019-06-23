@@ -16,7 +16,7 @@ export default class IslaamDBClient {
     public async queryForPerson(query: string): Promise<Person> {
 
         // get sheet rows
-        const values = await this.getSheetValues("Person");
+        const values = await this.getSheetValues("People");
 
         // remove titles from the query
         const titles = ["shaykh", "sheikh", "imaam"];
@@ -75,7 +75,7 @@ export default class IslaamDBClient {
      * @param personId The person to get praises for
      */
     public async getPraisersAndPraisesFor(personId: number) {
-        const data = await this.getSheetValues("Students");
+        const data = await this.getSheetValues("Praises");
         const cols = data[0];
         return data
             .slice(1)
@@ -91,10 +91,13 @@ export default class IslaamDBClient {
         const d = await sheetsAPI
             .spreadsheets
             .values
-            .get({ spreadsheetId: this.sheetId, range: `${sheetName}!` });
+            .get({
+                range: `${sheetName}!A:K`,
+                spreadsheetId: this.sheetId,
+            });
         if (!d.data.values) {
             throw new Error("Sorry. Something went wrong when accessing the data.");
         }
-        return d.data.values;
+        return d.data.values.filter((v) => v.length > 0);
     }
 }
