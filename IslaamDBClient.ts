@@ -80,7 +80,7 @@ export default class IslaamDBClient {
         return data
             .slice(1)
             .map((d) => new Praise(d, cols))
-            .filter((p) => [p.recommender.id, p.recommendee.id].includes(personId));
+            .filter((p) => [p.praiser.id, p.praisee.id].includes(personId));
     }
     /**
      * Gets data for a sheet
