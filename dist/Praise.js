@@ -14,7 +14,7 @@ class Praise {
             name: recommender[1],
         };
         this.source = vals[cols.indexOf("source")];
-        this.title = vals[cols.indexOf("relationship term")];
+        this.title = vals[cols.indexOf("title")];
     }
 }
 exports.Praise = Praise;

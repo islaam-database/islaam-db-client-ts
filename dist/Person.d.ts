@@ -1,3 +1,4 @@
+import IslaamDBClient from "./IslaamDBClient";
 export declare class Person {
     id: number;
     name: string;
@@ -6,6 +7,8 @@ export declare class Person {
     location?: string;
     deathYear?: number;
     source?: string;
-    constructor(vals: Array<string | number>, cols: string[]);
+    gender: string;
+    constructor(vals: string[], cols: string[]);
+    getBio(idb: IslaamDBClient): Promise<string>;
 }
 //# sourceMappingURL=Person.d.ts.map

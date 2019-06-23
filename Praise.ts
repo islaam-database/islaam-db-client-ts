@@ -19,6 +19,6 @@ export class Praise {
         };
 
         this.source = vals[cols.indexOf("source")] as string;
-        this.title = vals[cols.indexOf("relationship term")] as string;
+        this.title = vals[cols.indexOf("title")] as string;
     }
 }
