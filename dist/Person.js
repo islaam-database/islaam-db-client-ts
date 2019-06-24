@@ -53,7 +53,7 @@ class Person {
             else if (hasDeathYear)
                 bioIntro.push(`${pronoun} died in the year ${this.deathYear} AH.`);
             if (hasPraises)
-                bioIntro.push(`His praisers include: ${praiserNames}.`);
+                bioIntro.push(`${pronoun} was praised by include: ${praiserNames}.`);
             if (bioIntro.length === 2)
                 bioIntro.push("\nSorry. That's all I know at the moment.");
             bioIntro.push("\n\nPlease note that the research is not yet complete.");
