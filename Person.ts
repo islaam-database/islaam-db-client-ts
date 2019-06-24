@@ -57,7 +57,7 @@ export class Person {
         else if (hasBirthYear) bioIntro.push(`${pronoun} was born in the year ${this.birthYear} AH.`);
         else if (hasDeathYear) bioIntro.push(`${pronoun} died in the year ${this.deathYear} AH.`);
 
-        if (hasPraises) bioIntro.push(`${pronoun} was praised by include: ${praiserNames}.`);
+        if (hasPraises) bioIntro.push(`${pronoun} was praised by: ${praiserNames}.`);
 
         if (bioIntro.length === 2)
             bioIntro.push("\nSorry. That's all I know at the moment.");
