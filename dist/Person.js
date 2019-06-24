@@ -33,9 +33,6 @@ class Person {
             const praiserNames = Array
                 .from(new Set(praisers.map((p) => p.praiser.name)))
                 .join(", ");
-            const sources = new Set(praisers.map((p) => p.source));
-            if (this.source)
-                sources.add(this.source);
             // booleans
             const hasPraises = praisers.length > 0;
             const hasLocation = this.location != null;
@@ -57,11 +54,6 @@ class Person {
                 bioIntro.push(`${pronoun} died in the year ${this.deathYear} AH.`);
             if (hasPraises)
                 bioIntro.push(`His praisers include: ${praiserNames}.`);
-            if (sources.size) {
-                bioIntro.push(`\n\nSource${sources.size > 1 ? "s" : ""}:\n· ${Array.from(sources).join("\n· ")}.`);
-            }
-            else
-                bioIntro.push(`\n\nNo source is available at the moment.`);
             if (bioIntro.length === 2)
                 bioIntro.push("\nSorry. That's all I know at the moment.");
             bioIntro.push("\n\nPlease note that the research is not yet complete.");
