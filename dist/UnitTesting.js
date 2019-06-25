@@ -16,9 +16,9 @@ const IslaamDBClient_1 = __importDefault(require("./IslaamDBClient"));
 (() => __awaiter(this, void 0, void 0, function* () {
     const key = fs_1.readFileSync("key.txt", "utf8");
     const idb = new IslaamDBClient_1.default(key);
-    const moosaaBio = yield (yield idb.queryForPerson("Moosaa Richardson")).getBio(idb);
-    const AbuKhadeejahBio = yield (yield idb.queryForPerson("Abu Khadeejah")).getBio(idb);
-    const rabeeBio = yield (yield idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
+    // const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
+    // const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
+    // const rabeeBio = await (await idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
     yield (() => __awaiter(this, void 0, void 0, function* () {
         // get person by id
         const data = [
@@ -52,7 +52,7 @@ const IslaamDBClient_1 = __importDefault(require("./IslaamDBClient"));
         ];
         for (const tc of data)
             try {
-                // await testGettingPersonById(tc.id, tc.name);
+                yield testGettingPersonById(tc.id, tc.name);
             }
             catch (e) {
                 debugger;
@@ -61,6 +61,8 @@ const IslaamDBClient_1 = __importDefault(require("./IslaamDBClient"));
         function testGettingPersonById(id, name) {
             return __awaiter(this, void 0, void 0, function* () {
                 const person = yield idb.getPersonById(id);
+                if (person)
+                    console.log({ name: person.name, link: person.sheetUrl });
                 if (!person)
                     throw new Error("No person found");
                 if (person.name !== name)

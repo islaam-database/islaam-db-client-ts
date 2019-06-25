@@ -1,4 +1,5 @@
-export declare class Praise {
+import { SheetRow } from "./SheetRow";
+export declare class Praise extends SheetRow {
     subject?: string;
     praisee: {
         id: number;
@@ -10,6 +11,6 @@ export declare class Praise {
     };
     title?: string;
     source?: string;
-    constructor(vals: Array<string | number>, cols: string[]);
+    constructor(vals: Array<string | number>, cols: string[], rowNumInSheet: number);
 }
 //# sourceMappingURL=Praise.d.ts.map

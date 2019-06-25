@@ -1,10 +1,13 @@
-export class Praise {
+import { SheetRow } from "./SheetRow";
+
+export class Praise extends SheetRow {
     public subject?: string;
     public praisee: { id: number; name: string };
     public praiser: { id: number; name: string };
     public title?: string;
     public source?: string;
-    constructor(vals: Array<string | number>, cols: string[]) {
+    constructor(vals: Array<string | number>, cols: string[], rowNumInSheet: number) {
+        super(rowNumInSheet);
         cols = cols.map((c) => c.toLowerCase());
         const recommendee = vals[cols.indexOf("recommendee")].toString().split(". ");
         const recommender = vals[cols.indexOf("recommender")].toString().split(". ");
@@ -17,7 +20,6 @@ export class Praise {
             id: Number(recommender[0]),
             name: recommender[1],
         };
-
         this.source = vals[cols.indexOf("source")] as string;
         this.title = vals[cols.indexOf("title")] as string;
     }

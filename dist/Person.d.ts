@@ -1,5 +1,6 @@
 import IslaamDBClient from "./IslaamDBClient";
-export declare class Person {
+import { SheetRow } from "./SheetRow";
+export declare class Person extends SheetRow {
     id: number;
     name: string;
     kunya?: string;
@@ -8,7 +9,11 @@ export declare class Person {
     deathYear?: number;
     source?: string;
     gender: string;
-    constructor(vals: string[], cols: string[]);
+    constructor(vals: string[], cols: string[], sheetRowNumber: number);
+    /**
+     * Generates a short bio of the person and other meta data.
+     * @param idb an Islaam Database client
+     */
     getBio(idb: IslaamDBClient): Promise<{
         praiserNames: string[];
         text: string;

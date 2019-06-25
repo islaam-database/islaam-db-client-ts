@@ -8,8 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class Person {
-    constructor(vals, cols) {
+const SheetRow_1 = require("./SheetRow");
+class Person extends SheetRow_1.SheetRow {
+    constructor(vals, cols, sheetRowNumber) {
+        super(sheetRowNumber);
         cols = cols.map((c) => c.toLowerCase());
         this.id = Number(vals[cols.indexOf("id")]);
         this.name = vals[cols.indexOf("name")];
@@ -20,6 +22,10 @@ class Person {
         this.gender = vals[cols.indexOf("gender")];
         this.location = vals[cols.indexOf("location")];
     }
+    /**
+     * Generates a short bio of the person and other meta data.
+     * @param idb an Islaam Database client
+     */
     getBio(idb) {
         return __awaiter(this, void 0, void 0, function* () {
             const pronoun = this.gender ? "He" : "She";

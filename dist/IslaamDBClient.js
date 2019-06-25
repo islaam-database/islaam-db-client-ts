@@ -23,7 +23,6 @@ const StudentTeacher_1 = require("./StudentTeacher");
 class IslaamDBClient {
     constructor(key) {
         this.key = key;
-        this.sheetId = "1oEhVbC85KnVYpjOnqX18plTSyjyH6F4dxNQ4SjjkBAs";
     }
     /**
      * Searches for a person by name or kunya
@@ -40,9 +39,9 @@ class IslaamDBClient {
             const cols = values[0];
             const scores = values
                 .slice(1)
-                .map((v) => {
+                .map((v, i) => {
                 // get person
-                const p = new Person_1.Person(v, cols);
+                const p = new Person_1.Person(v, cols, i);
                 // get score per person
                 const hasExactMatch = [p.name, p.kunya].some((x) => x === query);
                 const score = hasExactMatch ? 0
@@ -63,7 +62,7 @@ class IslaamDBClient {
         return __awaiter(this, void 0, void 0, function* () {
             const data = yield this.getSheetValues("People");
             const cols = data[0];
-            const people = data.slice(1).map((v) => new Person_1.Person(v, cols));
+            const people = data.slice(1).map((v, i) => new Person_1.Person(v, cols, i + 2));
             return people.find((p) => p.id === id);
         });
     }
@@ -77,7 +76,7 @@ class IslaamDBClient {
             const cols = data[0];
             return data
                 .slice(1)
-                .map((d) => new StudentTeacher_1.StudentTeacher(d, cols))
+                .map((d, i) => new StudentTeacher_1.StudentTeacher(d, cols, i + 2))
                 .filter((p) => [p.student.id, p.teacher.id].includes(personId));
         });
     }
@@ -91,7 +90,7 @@ class IslaamDBClient {
             const cols = data[0];
             return data
                 .slice(1)
-                .map((d) => new Praise_1.Praise(d, cols))
+                .map((d, i) => new Praise_1.Praise(d, cols, i + 2))
                 .filter((p) => [p.praiser.id, p.praisee.id].includes(personId));
         });
     }
@@ -107,7 +106,7 @@ class IslaamDBClient {
                 .values
                 .get({
                 range: `${sheetName}!A:K`,
-                spreadsheetId: this.sheetId,
+                spreadsheetId: IslaamDBClient.sheetId,
             });
             if (!d.data.values) {
                 throw new Error("Sorry. Something went wrong when accessing the data.");
@@ -116,5 +115,6 @@ class IslaamDBClient {
         });
     }
 }
+IslaamDBClient.sheetId = "1oEhVbC85KnVYpjOnqX18plTSyjyH6F4dxNQ4SjjkBAs";
 exports.default = IslaamDBClient;
 //# sourceMappingURL=IslaamDBClient.js.map

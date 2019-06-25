@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class StudentTeacher {
-    constructor(vals, cols) {
+const SheetRow_1 = require("./SheetRow");
+class StudentTeacher extends SheetRow_1.SheetRow {
+    constructor(vals, cols, sheetRowNumber) {
+        super(sheetRowNumber);
         cols = cols.map((c) => c.toLowerCase());
         const student = vals[cols.indexOf("student")].toString().split(". ");
         const teacher = vals[cols.indexOf("teacher")].toString().split(". ");

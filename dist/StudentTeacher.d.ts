@@ -1,4 +1,5 @@
-export declare class StudentTeacher {
+import { SheetRow } from "./SheetRow";
+export declare class StudentTeacher extends SheetRow {
     subject?: string;
     student: {
         id: number;
@@ -10,6 +11,6 @@ export declare class StudentTeacher {
     };
     relationshipTerm?: string;
     source?: string;
-    constructor(vals: Array<string | number>, cols: string[]);
+    constructor(vals: Array<string | number>, cols: string[], sheetRowNumber: number);
 }
 //# sourceMappingURL=StudentTeacher.d.ts.map

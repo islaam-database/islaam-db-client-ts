@@ -6,7 +6,7 @@ import { StudentTeacher } from "./StudentTeacher";
 
 export default class IslaamDBClient {
 
-    private sheetId = "1oEhVbC85KnVYpjOnqX18plTSyjyH6F4dxNQ4SjjkBAs";
+    public static sheetId = "1oEhVbC85KnVYpjOnqX18plTSyjyH6F4dxNQ4SjjkBAs";
     constructor(private key: string) { }
 
     /**
@@ -26,9 +26,9 @@ export default class IslaamDBClient {
         const cols = values[0] as string[];
         const scores = values
             .slice(1)
-            .map((v) => {
+            .map((v, i) => {
                 // get person
-                const p = new Person(v, cols);
+                const p = new Person(v, cols, i);
 
                 // get score per person
                 const hasExactMatch = [p.name, p.kunya].some((x) => x === query);
@@ -55,7 +55,7 @@ export default class IslaamDBClient {
     public async getPersonById(id: number): Promise<Person | undefined> {
         const data = await this.getSheetValues("People");
         const cols = data[0] as string[];
-        const people = data.slice(1).map((v) => new Person(v, cols));
+        const people = data.slice(1).map((v, i) => new Person(v, cols, i + 2));
         return people.find((p) => p.id === id);
     }
     /**
@@ -67,7 +67,7 @@ export default class IslaamDBClient {
         const cols = data[0];
         return data
             .slice(1)
-            .map((d) => new StudentTeacher(d, cols))
+            .map((d, i) => new StudentTeacher(d, cols, i + 2))
             .filter((p) => [p.student.id, p.teacher.id].includes(personId));
     }
     /**
@@ -79,7 +79,7 @@ export default class IslaamDBClient {
         const cols = data[0];
         return data
             .slice(1)
-            .map((d) => new Praise(d, cols))
+            .map((d, i) => new Praise(d, cols, i + 2))
             .filter((p) => [p.praiser.id, p.praisee.id].includes(personId));
     }
     /**
@@ -93,7 +93,7 @@ export default class IslaamDBClient {
             .values
             .get({
                 range: `${sheetName}!A:K`,
-                spreadsheetId: this.sheetId,
+                spreadsheetId: IslaamDBClient.sheetId,
             });
         if (!d.data.values) {
             throw new Error("Sorry. Something went wrong when accessing the data.");

@@ -3,7 +3,7 @@ import { Praise } from "./Praise";
 import { StudentTeacher } from "./StudentTeacher";
 export default class IslaamDBClient {
     private key;
-    private sheetId;
+    static sheetId: string;
     constructor(key: string);
     /**
      * Searches for a person by name or kunya

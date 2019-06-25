@@ -1,6 +1,7 @@
 import IslaamDBClient from "./IslaamDBClient";
+import { SheetRow } from "./SheetRow";
 
-export class Person {
+export class Person extends SheetRow {
     public id: number;
     public name: string;
     public kunya?: string;
@@ -10,7 +11,8 @@ export class Person {
     public source?: string;
     public gender: string;
 
-    constructor(vals: string[], cols: string[]) {
+    constructor(vals: string[], cols: string[], sheetRowNumber: number) {
+        super(sheetRowNumber);
         cols = cols.map((c) => c.toLowerCase());
         this.id = Number(vals[cols.indexOf("id")]);
         this.name = vals[cols.indexOf("name")] as string;
@@ -22,6 +24,10 @@ export class Person {
         this.location = vals[cols.indexOf("location")] as string;
     }
 
+    /**
+     * Generates a short bio of the person and other meta data.
+     * @param idb an Islaam Database client
+     */
     public async getBio(idb: IslaamDBClient) {
         const pronoun = this.gender ? "He" : "She";
         const possesivePronoun = this.gender ? "His" : "Her";

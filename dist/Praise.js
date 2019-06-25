@@ -1,7 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Praise {
-    constructor(vals, cols) {
+const SheetRow_1 = require("./SheetRow");
+class Praise extends SheetRow_1.SheetRow {
+    constructor(vals, cols, rowNumInSheet) {
+        super(rowNumInSheet);
         cols = cols.map((c) => c.toLowerCase());
         const recommendee = vals[cols.indexOf("recommendee")].toString().split(". ");
         const recommender = vals[cols.indexOf("recommender")].toString().split(". ");

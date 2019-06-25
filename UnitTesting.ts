@@ -4,9 +4,9 @@ import IslaamDBClient from "./IslaamDBClient";
 (async () => {
     const key = readFileSync("key.txt", "utf8");
     const idb = new IslaamDBClient(key);
-    const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
-    const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
-    const rabeeBio = await (await idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
+    // const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
+    // const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
+    // const rabeeBio = await (await idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
     await (async () => {
         // get person by id
         const data = [
@@ -39,7 +39,7 @@ import IslaamDBClient from "./IslaamDBClient";
             { id: 71, name: "Muhammad Baazmool" },
         ];
         for (const tc of data) try {
-            // await testGettingPersonById(tc.id, tc.name);
+            await testGettingPersonById(tc.id, tc.name);
         } catch (e) {
             debugger;
             console.error(e);
@@ -47,6 +47,7 @@ import IslaamDBClient from "./IslaamDBClient";
 
         async function testGettingPersonById(id: number, name: string) {
             const person = await idb.getPersonById(id);
+            if (person) console.log({ name: person.name, link: person.sheetUrl });
             if (!person) throw new Error("No person found");
             if (person.name !== name) throw new Error("Mismatch.");
             console.log(`✅ ${id} returned ${person.name}`);
