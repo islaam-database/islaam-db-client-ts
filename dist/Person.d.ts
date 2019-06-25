@@ -9,6 +9,10 @@ export declare class Person {
     source?: string;
     gender: string;
     constructor(vals: string[], cols: string[]);
-    getBio(idb: IslaamDBClient): Promise<string>;
+    getBio(idb: IslaamDBClient): Promise<{
+        praiserNames: string[];
+        text: string;
+        titles: (string | undefined)[];
+    }>;
 }
 //# sourceMappingURL=Person.d.ts.map

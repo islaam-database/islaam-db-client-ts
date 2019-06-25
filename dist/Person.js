@@ -29,11 +29,9 @@ class Person {
             const praisers = praisesAndPraisers.filter((x) => x.praisee.id === this.id);
             const titles = Array
                 .from(new Set(praisers.map((p) => p.title)))
-                .filter((x) => x != null && x.length > 0)
-                .join(", ");
+                .filter((x) => x != null && x.length > 0);
             const praiserNames = Array
-                .from(new Set(praisers.map((p) => p.praiser.name)))
-                .join(", ");
+                .from(new Set(praisers.map((p) => p.praiser.name)));
             // booleans
             const hasPraises = praisers.length > 0;
             const hasDeathYear = this.deathYear != null && !isNaN(this.deathYear);
@@ -41,7 +39,7 @@ class Person {
             // praises
             bioIntro[0] += (this.kunya || this.name) + ".";
             if (hasPraises)
-                bioIntro.push(`${possesivePronoun} titles include: ${titles}.`);
+                bioIntro.push(`${possesivePronoun} titles include: ${titles.join(", ")}.`);
             // location
             if (this.location)
                 bioIntro.push(`${pronoun} is from ${this.location}.`);
@@ -53,13 +51,17 @@ class Person {
             else if (hasDeathYear)
                 bioIntro.push(`${pronoun} died in the year ${this.deathYear} AH.`);
             if (hasPraises)
-                bioIntro.push(`${pronoun} was praised by: ${praiserNames}.`);
+                bioIntro.push(`${pronoun} was praised by: ${praiserNames.join(", ")}.`);
             if (bioIntro.length === 2) {
                 bioIntro.push("\nSorry. That's all I know at the moment.");
             }
             bioIntro.push("\n\nPlease note that the research is not yet complete.");
             // join sentences together
-            return bioIntro.join(" ");
+            return {
+                praiserNames,
+                text: bioIntro.join(" "),
+                titles,
+            };
         });
     }
 }
