@@ -4,8 +4,8 @@ import IslaamDBClient from "./IslaamDBClient";
 (async () => {
     const key = readFileSync("key.txt", "utf8");
     const idb = new IslaamDBClient(key);
-    // const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
-    // const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
+    const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
+    const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
     const rabeeBio = await (await idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
     await (async () => {
         // get person by id

@@ -19,6 +19,7 @@ export class Person {
         this.deathYear = parseInt(vals[cols.indexOf("death year")], undefined);
         this.source = vals[cols.indexOf("source")] as string;
         this.gender = vals[cols.indexOf("gender")] as string;
+        this.location = vals[cols.indexOf("location")] as string;
     }
 
     public async getBio(idb: IslaamDBClient) {
@@ -37,7 +38,6 @@ export class Person {
 
         // booleans
         const hasPraises = praisers.length > 0;
-        const hasLocation = this.location != null;
         const hasDeathYear = this.deathYear != null && !isNaN(this.deathYear);
         const hasBirthYear = this.birthYear != null && !isNaN(this.birthYear);
 
@@ -47,7 +47,7 @@ export class Person {
             bioIntro.push(`${possesivePronoun} titles include: ${titles}.`);
 
         // location
-        if (hasLocation) bioIntro.push(`${pronoun} is from ${location}.`);
+        if (this.location) bioIntro.push(`${pronoun} is from ${this.location}.`);
 
         // birth and death year
         if (hasBirthYear && hasDeathYear)

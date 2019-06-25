@@ -18,6 +18,7 @@ class Person {
         this.deathYear = parseInt(vals[cols.indexOf("death year")], undefined);
         this.source = vals[cols.indexOf("source")];
         this.gender = vals[cols.indexOf("gender")];
+        this.location = vals[cols.indexOf("location")];
     }
     getBio(idb) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -35,7 +36,6 @@ class Person {
                 .join(", ");
             // booleans
             const hasPraises = praisers.length > 0;
-            const hasLocation = this.location != null;
             const hasDeathYear = this.deathYear != null && !isNaN(this.deathYear);
             const hasBirthYear = this.birthYear != null && !isNaN(this.birthYear);
             // praises
@@ -43,8 +43,8 @@ class Person {
             if (hasPraises)
                 bioIntro.push(`${possesivePronoun} titles include: ${titles}.`);
             // location
-            if (hasLocation)
-                bioIntro.push(`${pronoun} is from ${location}.`);
+            if (this.location)
+                bioIntro.push(`${pronoun} is from ${this.location}.`);
             // birth and death year
             if (hasBirthYear && hasDeathYear)
                 bioIntro.push(`${pronoun} was born in the year ${this.birthYear} and died ${this.deathYear} AH.`);
