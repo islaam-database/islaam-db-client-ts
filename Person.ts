@@ -47,7 +47,7 @@ export class Person {
             bioIntro.push(`${possesivePronoun} titles include: ${titles}.`);
 
         // location
-        if (hasLocation) bioIntro.push(`${pronoun} is from &{location}.`);
+        if (hasLocation) bioIntro.push(`${pronoun} is from ${location}.`);
 
         // birth and death year
         if (hasBirthYear && hasDeathYear)
@@ -59,8 +59,9 @@ export class Person {
 
         if (hasPraises) bioIntro.push(`${pronoun} was praised by: ${praiserNames}.`);
 
-        if (bioIntro.length === 2)
+        if (bioIntro.length === 2) {
             bioIntro.push("\nSorry. That's all I know at the moment.");
+        }
 
         bioIntro.push("\n\nPlease note that the research is not yet complete.");
 
