@@ -28,7 +28,7 @@ export default class IslaamDBClient {
             .slice(1)
             .map((v, i) => {
                 // get person
-                const p = new Person(v, cols, i);
+                const p = new Person(v, cols, i + 2);
 
                 // get score per person
                 const hasExactMatch = [p.name, p.kunya].some((x) => x === query);

@@ -47,12 +47,12 @@ const IslaamDBClient_1 = __importDefault(require("./IslaamDBClient"));
             { id: 58, name: "Ash-Shawkanee" },
             { id: 59, name: "Al-Albaanee" },
             { id: 61, name: "Muhammad Zaynoo" },
-            { id: 69, name: "Moosaa Richardson" },
             { id: 71, name: "Muhammad Baazmool" },
+            { id: 69, name: "Moosaa Richardson" },
         ];
         for (const tc of data)
             try {
-                yield testGettingPersonById(tc.id, tc.name);
+                // await testGettingPersonById(tc.id, tc.name);
             }
             catch (e) {
                 debugger;
@@ -74,33 +74,34 @@ const IslaamDBClient_1 = __importDefault(require("./IslaamDBClient"));
     yield (() => __awaiter(this, void 0, void 0, function* () {
         // search for person
         const data = [
-            { query: "abu khadeeja", id: 99 },
-            { query: "as-sa'dee", id: 7 },
-            { query: "abdurrazaq badr", id: 253 },
-            { query: "'Abdur-Razzaaq", id: 253 },
-            { query: "'Abdur-Razzaaq Al-Badr", id: 253 },
+            // { query: "abu khadeeja", id: 99 },
+            // { query: "as-sa'dee", id: 7 },
+            // { query: "abdurrazaq badr", id: 253 },
+            // { query: "'Abdur-Razzaaq", id: 253 },
+            // { query: "'Abdur-Razzaaq Al-Badr", id: 253 },
+            // { query: "moosaa richardson", id: 69 },
+            // { query: "As-Sa'dee", id: 7 },
+            // { query: "ibn taymiyyah", id: 215 },
+            // { query: "ibn taymiyya", id: 215 },
+            // { query: "Imaam Ahmad", id: 106 },
+            // { query: "Bin Baz", id: 73 },
+            // { query: "Muhammad al-Jaamee", id: 74 },
+            // { query: "Muhammad ibn 'Abdel Wahhaab", id: 210 },
+            // { query: "Shaykh Muhammad Baazmool", id: 71 },
+            // { query: "Muhammad Baazmool", id: 71 },
+            // { query: "Muhammad Bazmul", id: 71 },
+            // { query: "Muhammad bin Zarrad", id: 30 },
+            // { query: "Ibn Hajr", id: 16 },
+            // { query: "Mujaahid", id: 89 },
+            // { query: "Rabee'", id: 72 },
+            // { query: "Shaykh Rabee'", id: 72 },
+            // { query: "ash-shaafi'ee", id: 41 },
+            // { query: "ahmad", id: 106 },
             { query: "moosaa richardson", id: 69 },
-            { query: "As-Sa'dee", id: 7 },
-            { query: "ibn taymiyyah", id: 215 },
-            { query: "ibn taymiyya", id: 215 },
-            { query: "Imaam Ahmad", id: 106 },
-            { query: "Bin Baz", id: 73 },
-            { query: "Muhammad al-Jaamee", id: 74 },
-            { query: "Muhammad ibn 'Abdel Wahhaab", id: 210 },
-            { query: "Shaykh Muhammad Baazmool", id: 71 },
-            { query: "Muhammad Baazmool", id: 71 },
-            { query: "Muhammad Bazmul", id: 71 },
-            { query: "Muhammad bin Zarrad", id: 30 },
-            { query: "Ibn Hajr", id: 16 },
-            { query: "Mujaahid", id: 89 },
-            { query: "Rabee'", id: 72 },
-            { query: "Shaykh Rabee'", id: 72 },
-            { query: "ash-shaafi'ee", id: 41 },
-            { query: "ahmad", id: 106 },
         ];
         for (const tc of data)
             try {
-                // await testSearchingForPerson(tc.query, tc.id);
+                yield testSearchingForPerson(tc.query, tc.id);
             }
             catch (e) {
                 debugger;
