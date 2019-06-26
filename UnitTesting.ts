@@ -7,6 +7,7 @@ import IslaamDBClient from "./IslaamDBClient";
     // const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
     // const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
     // const rabeeBio = await (await idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
+    const fawzaanBio = await (await idb.queryForPerson("Saalih al-fawzaan")).getBio(idb);
     await (async () => {
         // get person by id
         const data = [

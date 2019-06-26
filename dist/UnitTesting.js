@@ -19,6 +19,7 @@ const IslaamDBClient_1 = __importDefault(require("./IslaamDBClient"));
     // const moosaaBio = await (await idb.queryForPerson("Moosaa Richardson")).getBio(idb);
     // const AbuKhadeejahBio = await (await idb.queryForPerson("Abu Khadeejah")).getBio(idb);
     // const rabeeBio = await (await idb.queryForPerson("Shaykh Rabee'")).getBio(idb);
+    const fawzaanBio = yield (yield idb.queryForPerson("Saalih al-fawzaan")).getBio(idb);
     yield (() => __awaiter(this, void 0, void 0, function* () {
         // get person by id
         const data = [

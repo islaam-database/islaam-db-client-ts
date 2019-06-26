@@ -45,9 +45,10 @@ export class Person extends SheetRow {
         const hasDeathYear = this.deathYear != null && !isNaN(this.deathYear);
         const hasBirthYear = this.birthYear != null && !isNaN(this.birthYear);
 
-        // praises
         bioIntro[0] += (this.kunya || this.name) + ".";
-        if (hasPraises)
+
+        // praises
+        if (hasPraises && titles.length > 0)
             bioIntro.push(`${possesivePronoun} titles include: ${titles.join(", ")}.`);
 
         // location
