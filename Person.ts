@@ -1,6 +1,8 @@
 import IslaamDBClient from "./IslaamDBClient";
 import { SheetRow } from "./SheetRow";
 
+type gender = "Male" | "Female";
+
 export class Person extends SheetRow {
     public id: number;
     public name: string;
@@ -9,7 +11,7 @@ export class Person extends SheetRow {
     public location?: string;
     public deathYear?: number;
     public source?: string;
-    public gender: string;
+    public gender: "Male" | "Female";
 
     constructor(vals: string[], cols: string[], sheetRowNumber: number) {
         super(sheetRowNumber);
@@ -20,7 +22,7 @@ export class Person extends SheetRow {
         this.birthYear = parseInt(vals[cols.indexOf("birth year")], undefined);
         this.deathYear = parseInt(vals[cols.indexOf("death year")], undefined);
         this.source = vals[cols.indexOf("source")] as string;
-        this.gender = vals[cols.indexOf("gender")] as string;
+        this.gender = vals[cols.indexOf("gender")] as gender;
         this.location = vals[cols.indexOf("location")] as string;
     }
 
@@ -29,8 +31,8 @@ export class Person extends SheetRow {
      * @param idb an Islaam Database client
      */
     public async getBio(idb: IslaamDBClient) {
-        const pronoun = this.gender ? "He" : "She";
-        const possesivePronoun = this.gender ? "His" : "Her";
+        const pronoun = this.gender === "Male" ? "He" : "She";
+        const possesivePronoun = this.gender === "Male" ? "His" : "Her";
         const bioIntro = [`${pronoun} is `];
         const praisesAndPraisers = (await idb.getPraisersAndPraisesFor(this.id));
         const praisers = praisesAndPraisers.filter((x) => x.praisee.id === this.id);

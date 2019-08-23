@@ -8,7 +8,7 @@ export declare class Person extends SheetRow {
     location?: string;
     deathYear?: number;
     source?: string;
-    gender: string;
+    gender: "Male" | "Female";
     constructor(vals: string[], cols: string[], sheetRowNumber: number);
     /**
      * Generates a short bio of the person and other meta data.

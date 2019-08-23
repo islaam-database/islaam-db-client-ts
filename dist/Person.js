@@ -28,8 +28,8 @@ class Person extends SheetRow_1.SheetRow {
      */
     getBio(idb) {
         return __awaiter(this, void 0, void 0, function* () {
-            const pronoun = this.gender ? "He" : "She";
-            const possesivePronoun = this.gender ? "His" : "Her";
+            const pronoun = this.gender === "Male" ? "He" : "She";
+            const possesivePronoun = this.gender === "Male" ? "His" : "Her";
             const bioIntro = [`${pronoun} is `];
             const praisesAndPraisers = (yield idb.getPraisersAndPraisesFor(this.id));
             const praisers = praisesAndPraisers.filter((x) => x.praisee.id === this.id);
